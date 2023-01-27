@@ -13,14 +13,14 @@ app.use('/api', api);
 
 app.use(express.static('public'));
 
-// GET Route for homepage
-app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/index.html'))
-);
-
-// GET Route for feedback page
+// GET Route for feedback page - must come first so the catchall doesnt redirect to index
 app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
+);
+
+// GET Route for homepage - any mistyped url will redirct here
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/index.html'))
 );
 
 app.listen(PORT, () =>
