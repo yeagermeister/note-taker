@@ -3,12 +3,10 @@ const uuid = require('../helpers/uuid');
 const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 
 notes.get('/', (req, res) => {
-    console.log(`${req.method} request received for notes`);
   readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)))
 });
 
 notes.post('/', (req, res) => {
-    console.log(`${req.method} request received for notes`);
     const {title, text} = req.body;
 
     if (title && text) {
