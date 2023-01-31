@@ -35,7 +35,6 @@ notes.delete('/:id', (req, res, next) => {
     readFromFile('./db/db.json').then((data) => {
         data = JSON.parse(data);
         for (let i = 0; i < data.length; i++) {
-            console.log('storednotes', data[i].id)
             if (data[i].id === deleteID) {
                 data.splice(i, 1);
                 writeToFile('./db/db.json', data);
